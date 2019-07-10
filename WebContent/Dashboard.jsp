@@ -575,7 +575,7 @@ label{margin:0px;}
 		    	
 		    	zoomEnabled: true,
 		        title:{
-		            text:"Live Chart from Temperature"
+		            text:"Live Chart from Temperature battery"
 		        },
 		        axisY:{
 		        	      minimum: 20,
