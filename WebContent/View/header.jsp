@@ -1,5 +1,57 @@
+ <script>
+    var first = $(location).attr('pathname');
+    first.indexOf(1);
+    first.toLowerCase();
+    first = first.split("/")[2];
+    if(first == "RouteMaster.jsp")
+    	{
+	    	$("header>.row>.col-md-6>ul>li").removeClass("active");
+			$("header>.row>.col-md-6>ul>li.setup").addClass("active");
+    		$("#route").addClass("btn-head-active");
+    	}
+    if(first == "GoodsMaster.jsp")
+	{
+		$("header>.row>.col-md-6>ul>li").removeClass("active");
+		$("header>.row>.col-md-6>ul>li.setup").addClass("active");
+		$("#good_type").addClass("btn-head-active");
+	}
+    if(first == "Dashboard.jsp")
+	{
+		$("header>.row>.col-md-6>ul>li").removeClass("active");
+		$("header>.row>.col-md-6>ul>li.shipment").addClass("active");
+	}
+   // alert(first);
+       $(function(){
+    	   var bpval = $("#bpi_idchange").val();
+   		 var scmval = $("#scmid").val();
+   		 changebpid(scmval,bpval); 
+    $(".dropdown").hover(            
+            function() {
+                $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
+                $(this).toggleClass('open');
+                $('b', this).toggleClass("caret caret-up");                
+            },
+            function() {
+                $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
+                $(this).toggleClass('open');
+                $('b', this).toggleClass("caret caret-up");                
+            });
+    });
+    
+    </script>
 
-
+<% 
+session.setAttribute("Cust_Name","Mabe Canada Inc");
+session.setAttribute("bp_name","Nancy");
+session.setAttribute("Cust_Id","SCM0001");
+session.setAttribute("bp_id","BP0001");
+%> 
+<% 
+String Cust_Name=(String)session.getAttribute("Cust_Name");
+String bp_name=(String)session.getAttribute("bp_name");
+String Cust_Id=(String)session.getAttribute("Cust_Id");
+String bp_id=(String)session.getAttribute("bp_id");
+%> 
 <!-- <script src="./js/All.js"></script>
 <script src="./js/CommonFunction.js"></script> -->
  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
@@ -432,12 +484,14 @@
             cursor: pointer;
         }
         .dropdown-menu{width:11rem;}
+        .sessionUsername{width: 100%;height: 20px;font-size: 14px;font-weight: 700;}
+        .sessionUsernameDisplay{width: 35%;height: 20px;float: left;}
     </style>
     
     <header>
         <div class="row">
             
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <ul>
                     <li class="shipment"><a href="Dashboard.jsp">Shipment</a></li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown">Devices</a>
@@ -452,17 +506,19 @@
                     <li class="dropdown setup">
 					          <a href="#" data-toggle="dropdown">Setup</a>
 					          <ul class="dropdown-menu" style="border:0px solid;margin-top:15px;padding:0px 2px;">
-					            <li class="bg-color btn-head w-100" style="border-radius:0px 5px  0px 0px;" id="customer">Customer</li>
-	                    		<li class="bg-color btn-head w-100" id="bp">Business Partner</li>
+					            <li class="bg-color btn-head w-100" style="border-radius:0px 5px  0px 0px;" id="customer" onclick="javascript:Customer();">Customer</li>
+	                    		<li class="bg-color btn-head w-100" id="bp" onclick="javascript:BusinessPartner();">Business Partner</li>
 	                    		<li class="bg-color btn-head w-100" id="route" onclick="javascript:RouteMaster();">Route Master</li>
 	                    		<li class="bg-color btn-head w-100" id="good_type" onclick="javascript:GoodsMaster();"style="border-radius:0px 0px  5px 5px;">Goods Master</li>
 					          </ul>
        				 </li>
                 </ul>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4 pl-0">
                 <div class="dropdown">
-                    <select id="bpi_idchange" class="form-control" style="float:left;width:45%;">
+                	<div class="sessionUsername"><span class="sessionUsernameDisplay">Customer Name</span><span style="float:left;width:3%;text-align:center;">:</span><span><% out.print(Cust_Name); %></span><input type="hidden" value="<% out.print(Cust_Id); %>"  id="scmid" /></div>
+                	<div class="sessionUsername"><span class="sessionUsernameDisplay">Business Partner Name</span><span style="float:left;width:3%;text-align:center;">:</span><span><% out.print(bp_name); %></span><input type="hidden" value="<% out.print(bp_id); %>" id="bpi_idchange" /></div>
+                    <!-- <select id="bpi_idchange" class="form-control" style="float:left;width:45%;">
                         <option value="BP0001">BP0001</option>
                         <option value="BP0002">BP0002</option>
                         <option value="BP0003">BP0003</option>
@@ -471,49 +527,15 @@
                         <option value="SCM0001">SCM0001</option>
                         <option value="SCM0002">SCM0002</option>
                         <option value="SCM0003">SCM0003</option>
-                    </select>
+                    </select> -->
                 </div>
             </div>
             <div class="col-md-3">
-                <a href="http://18.218.150.152:8081/Scmxpertdashboard/Dashboard.jsp#"><img src="./images/logo-new(1).jpg"></a>
+                <!-- <img src="./images/logout.png" style="float: left;margin-right: 20%; margin-top: 7%;" /> -->
+                <button class="bg-color margin-rl1 btn-head" style="line-height: 20px;margin-top: 22px;border-radius: 3px;">Logout</button>
+                <a href="http://localhost:8081/Scmxpertdashboard/Dashboard.jsp#"><img src="./images/logo-new(1).jpg" style="float:right;"></a>
+                
             </div>
         </div>
     </header>
-    <script>
-    var first = $(location).attr('pathname');
-    first.indexOf(1);
-    first.toLowerCase();
-    first = first.split("/")[2];
-    if(first == "RouteMaster.jsp")
-    	{
-	    	$("header>.row>.col-md-6>ul>li").removeClass("active");
-			$("header>.row>.col-md-6>ul>li.setup").addClass("active");
-    		$("#route").addClass("btn-head-active");
-    	}
-    if(first == "GoodsMaster.jsp")
-	{
-		$("header>.row>.col-md-6>ul>li").removeClass("active");
-		$("header>.row>.col-md-6>ul>li.setup").addClass("active");
-		$("#good_type").addClass("btn-head-active");
-	}
-    if(first == "Dashboard.jsp")
-	{
-		$("header>.row>.col-md-6>ul>li").removeClass("active");
-		$("header>.row>.col-md-6>ul>li.shipment").addClass("active");
-	}
-   // alert(first);
-       $(function(){
-    $(".dropdown").hover(            
-            function() {
-                $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
-                $(this).toggleClass('open');
-                $('b', this).toggleClass("caret caret-up");                
-            },
-            function() {
-                $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
-                $(this).toggleClass('open');
-                $('b', this).toggleClass("caret caret-up");                
-            });
-    });
-    
-    </script>
+   

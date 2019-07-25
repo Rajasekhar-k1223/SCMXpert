@@ -46,7 +46,7 @@ btn btn-light dropdown-toggle{
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
  <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
 <script src="./js/jquery.cookie.js"></script>
-<script src="./js/All.js"></script>
+<!-- <script src="./js/All.js"></script> -->
 <script src="./js/Devices.js"></script>
 <script src="./js/CommonFunction.js"></script>
 <script src="./js/jquery.tabletojson.js"></script>
@@ -121,7 +121,7 @@ btn btn-light dropdown-toggle{
  <h2 style="text-align:center;margin:0px;"><img src="./images/Capture_scm_half_logo_1.png" style="width:50px;height:50px;"> Available Devices</h2>
  <div class="container">
   	<div class="row">
-  	<div class="col-sm-12 col-md-12 col-lg-12"><a href="Dashboard.jsp"><button class="btn btn-dark float-right" style="padding:5px 15px;font-size: 12px;font-weight: 600;margin-bottom: 1%;">Back</button></a></div>
+  	<div class="col-sm-12 col-md-12 col-lg-12"><a href="Dashboard.jsp"><button class="bg-color btn-head float-right"><i class="fa fa-arrow-left" style="font-size:18px"></i></button></a></div>
   	<div class="col-sm-12 col-md-12 col-lg-12">
   	<div class="row">
   		<div class="col-sm-12 col-lg-5 col-md-5"  style="border: 1px solid #000;padding: 1%;border-radius: 3px">
@@ -146,7 +146,7 @@ btn btn-light dropdown-toggle{
   	</div>
   	</div></div>
 <div id="error"></div>
-<div class="col-sm-12 col-md-12 col-lg-12 mt-3 p-0" style="overflow-x:auto;">
+<div class="col-sm-12 col-md-12 col-lg-12 mt-3 p-0" style="overflow-x:auto;height:300px;">
 <table class="table table-striped table-bordered p-0" id="deviceAvalibletable" style="font-size:11px;overflow-x:auto;">
 	<thead>
   		<tr>

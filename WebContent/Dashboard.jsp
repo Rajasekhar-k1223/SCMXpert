@@ -6,151 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SCMXpert Dashboard</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <jsp:include page="./View/jsfiles.jsp" />
-<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
-  
-  
-  
-<!--   <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"/>
-<link rel="stylesheet" href = "https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
-<script rel="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script rel="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script rel="javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
-<!-- <script src=" https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-<link rel="stylesheet" href = "https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"/> -->
-  
-  <!-- <script src="./js/Map.js"></script> -->
+<title>SCMXpert/Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="./View/jsfiles.jsp" />
-<style>
-btn btn-light dropdown-toggle{
- background:brown;
-}
-.delivered_shipments{display:none;}
-@keyframes blink {
-       0% {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-       50% {
-            -webkit-transform: scale(1.5);
-            transform: scale(1.5);
-        }
-        100% {
-          -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-    }
- .alaram {
-        transition: .3s ease-in;
-        animation: blink 1s;
-        animation-iteration-count: infinite;
-    }
- #tablelist_data>tbody>tr{transition: transform .2s;postion:relative; /* Animation */}
- #tablelist_data>tbody>tr:hover{ transform: scale(1.1);background:blue;color:#fff;box-shadow: -5px 3px 30px #000;}
- .live_shipments{overflow-y:auto;overflow-x:hidden;width:100%;max-height:450px;border-top: 2px solid #915163b5;margin-top: 18px;}
- .delivered_shipments{min-height: 450px;overflow-y:auto;overflow-x:hidden;width:100%;}
-.live_shipments_list{transition: transform .2s;/* Animation */}
-.live_shipments_list:hover{transform: scale(1.04);box-shadow: -5px 3px 30px #000;z-index: 1;position: relative;}
-.header-menu{color:#fff;float:left;}
-.header-menu a{color:#fff;font-weight:bold;}
-.header-menu:hover{background:#fff;border-radius:5px 5px 0px 0px;}
-.header-menu:hover a{color:#274a6f;}
-.site-title{color: #ffffff;text-shadow: 0 4px 0 rgba(100,100,100,1), 0 8px 3px rgba(0,0,0,0.7);font-weight: 600;font-size: 38px;padding: 1%;font-weight: bold;}
-.site-title a{text-decoration:none;color:#ffffff;}
-.site-title:hover a{text-decoration:none;color:#ffffff;}
-.hide_show_icon,.show_hide_icon{font-weight: bold;cursor:pointer;text-align:center;float:right;margin-top:1%;}
-.hide_show_icon, .show_remaing{display:none;}
-.showviewdata{display:none;width: 57%;background: #fff;border-radius: 5px;z-index: 9999999999;position: absolute;height: 450px;top: 74px;bottom: 10px;right: 23%;}
-#backgroundBlur{background: #000000;opacity: .7;display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 999999999;}
-.view_body_boder{width:95%;height:80%;border:1px solid #000;margin:auto;box-shadow:0px 0px 5px #000;}
-.view_body_header{width:100%;height:30px;padding-top:1%;padding-right:3%;}
-.nodes{width:55px;font-size:11px;font-weight:bold;border:1px solid #000;float:left;text-align:center;margin:1px;float:right;border-radius:3px 3px 0px 0px;}
-.createshipmentfont a:hover{color:#fff;}
-.width1{width:1%;}
-.width5{width:5%;}
-.width25{width:25%;}
-.width50{width:50%;}
-.width75{width:75%;}
-.width90{width:90%;}
-.width100{width:100%;}
-#tablelist_data_length{float:right;}
-table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting {
-    padding-right: 20px;
-}
-#error_filter{color:red;font-weight:bold;font-size:12px;width:100%;text-align:center;}
-.delivery_charts{display:none;}
-body{overflow-x:hidden;overflow-y:auto;}
-.showlistcard{transform: scale(1.04);box-shadow: -5px 3px 30px #000;z-index: 1;position: relative;}
-#ui-datepicker-div{index:9999;}
-.tab-pane>br{display:none;}
-#draftTableaa>thead>tr>th{padding:4px;text-align:center;}
-#draftTableaa>tbody>tr>td{padding:2px;text-align:center;}
-#draftTableaa_length{font-size: 12px;margin-top: 9px;display:none;}
-#draftTableaa_filter{font-size: 12px;margin-top: 9px;display:none;}
-.form-control-sm{height:25px;}
-.custom-select-sm {height:25px;}
-label{margin:0px;}
-#draftTableaa_info{font-size: 12px;}
-.dataTables_paginate,.dataTables_info{display:none;}
-#draftTableaa_paginate{font-size:9px;}
-#draftTableaa>thead>tr>.sorting, .sorting_asc, .sorting_desc {
-    background : none;
-}
-table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before{content:none;}
-table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after{content:none;}
-div::-webkit-scrollbar {
-    width: 12px;
-}
-
-div::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
-}
-
-div::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-}
-.shipment_name{width:80%;border: 1px solid #000;padding: 1.5%;border-radius: 5px;margin-top: 1.5%;}
-#shipmentdatalistshow>tbody>tr:hover{background:lightgray;font-weight:bold;cursor:pointer;}
-
-
-#shipmentdatalistshow>thead>tr>th{padding:4px;text-align:center;}
-#shipmentdatalistshow>tbody>tr>td{padding:2px;text-align:center;}
-#shipmentdatalistshow_length{font-size: 12px;margin-top: 9px;display:none;}
-#shipmentdatalistshow_filter{font-size: 12px;margin-top: 9px;display:none;}
-.form-control-sm{height:25px;}
-.custom-select-sm {height:25px;}
-label{margin:0px;}
-#shipmentdatalistshow_info{font-size: 12px;}
-#shipmentdatalistshow_paginate{font-size:9px;}
-#shipmentdatalistshow>thead>tr>.sorting, .sorting_asc, .sorting_desc {
-    background : none;
-}
-#draftTableaa>tbody>tr:hover{background:lightgray;font-weight:bold;cursor:pointer;}
-#loadingimg{position: absolute;margin: 10% 40%;display:none;}
-#loadingimg1{margin: 10% 30%;display:none;}
-#bottom_map{height:200px;overflow-y:auto;}
-</style>
 </head>
 <body>
-  <!-- <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"/> -->
-
-      <!-- <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
-<!--       <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
-		<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/> -->
-		
-		
- 
-<!--  <script src="https://api.mqcdn.com/sdk/mapquest-gl-js/v0.4.0/mapquest-gl.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-gl-js/v0.4.0/mapquest-gl.css"/> -->
 <script>
 
 /* maps */
@@ -208,19 +68,44 @@ label{margin:0px;}
 </script>
           <!-- Javascript -->
       <script>
+      function seachfilter()
+      {
+
+	   	var from = $("#from").val().trim();
+      	var to = $("#to").val().trim();
+      	var goods = $("#selectgoods").val();
+      	var date = $("#datepicker-13").val();
+      	var delivery = $("#delivery").val();
+      	var refer = $("#reference").val();
+      	var device = $("#devices").val();
+      	var bpval = $("#bpi_idchange").val();
+ 			 var scmval = $("#scmid").val();
+    	  //$(".live_shipments").empty();
+    	  
+    	  
+    	  	$('.live_shipments_list,#draftTableaa>tbody>tr').hide();
+    	    $('.live_shipments_list,#draftTableaa>tbody>tr').each(function(){
+    	       if($(this).text().toUpperCase().indexOf(from.toUpperCase() || to.toUpperCase() || goods || date || delivery || refer || device || delivery) != -1){
+    	           $(this).show();
+    	       }
+    	    });
+      }
          $(function() {
+        
+        	 
+        	 
         	 $('#bottom_map').scroll(function(){
         		 if ($(this).scrollTop() >= 10) {
         			 
         		 }
         		});
-        	 $("#bpi_idchange,#scmid").on("change",function(){
+        	 /* $("#bpi_idchange,#scmid").on("change",function(){
          		$.removeCookie("cust_name", { path: '/' });
-      	        $.removeCookie("bp_id", { path: '/' });
-         		 var bpval = $("#bpi_idchange").val();
+      	        $.removeCookie("bp_id", { path: '/' }); */
+         		 /* var bpval = $("#bpi_idchange").val();
          		 var scmval = $("#scmid").val();
-         		 changebpid(scmval,bpval);
-         	 });
+         		 changebpid(scmval,bpval); */
+         	 /* }); */
         	 var bpval = $("#bpi_idchange").val();
     		 var scmval = $("#scmid").val();
         	 $.getJSON('http://localhost:8080/SCMXPert/getShipments/'+scmval+'/'+bpval, function(filter){
@@ -252,7 +137,7 @@ label{margin:0px;}
 			    }); */
         	 var bpval = $("#bpi_idchange").val();
     		 var scmval = $("#scmid").val();
-    		 changebpid(scmval,bpval);
+    		// changebpid(scmval,bpval);
     		 
     		 
              $( "#datepicker-13" ).datepicker({ dateFormat: 'm-d-yy'});
@@ -284,8 +169,8 @@ label{margin:0px;}
              	$(".hide_show_icon,.show_remaing").show();
              	$(this).hide();            	
              });
-             $("#backgroundBlur,.close").on("click",function(){
-             	$("#backgroundBlur").hide();
+             $("#backgroundBlur,.close,#CancelBtn").on("click",function(){
+             	$("#backgroundBlur,.showtablelist").hide();
              	$(".showviewdata").hide();
              	$("body").css("overflow-y","auto");
              });
@@ -392,11 +277,10 @@ label{margin:0px;}
              			}
              		$('#draftTableaa>tbody').empty();
              		$('#draftTableaa>tbody>td').css("padding","0px");
-             		var shipment_device = '<div class="p-1 m-1 live_shipments_list row goods_'+value.goods_Desc+' shipdate_'+date_string+' delivery_'+value.shipment_Num+' device_'+value.device_Id+' reference_'+value.type_Of_Reference+' dept_'+value.departments+' one_'+value.device_Id+' two_list two_view_'+value.shipment_Id+' from_'+value.route_From.toLowerCase()+' to_'+value.route_To.toLowerCase()+'" onclick="javascript:showdatadialogbox(\''+value.shipment_Id+'\',\''+value.shipment_Num+'\',\''+value.device_Id+'\',\''+value.created_Date+'\',\''+value.route_From+'\',\''+value.route_To+'\','+getPointsWays+');" style="width:98%;border:1px solid black;border-radius:3px;min-height:60px;cursor:pointer;"  ><div class="from_coordinates_'+value.route_From.toLowerCase()+' to_coordinates_'+value.route_To.toLowerCase()+' device_coordinates_'+value.device_Id+'" style="display:none;">'+value.wayPoints[var_length-1]+'</div><div class="col-md-4 col-sm-4"><h6 class="m-0">'+value.shipment_Id+'</h6><p style="font-size:10px;margin:0px;font-weight:600;">From :- '+value.route_From+'</p><p style="font-size:10px;margin:0px;font-weight:600;">To :- '+value.route_To+'</p></div><div class="col-md-5 col-sm-5"><div style="width:100%;"><p style="float:left;text-align:left;width:50%;font-size:10px;margin:0px;font-weight:600;margin-top:0px;">'+date_create+'</p><p style="float:left;text-align:right;width:50%;font-size:10px;font-weight:600;margin-top:0px;">'+delivered_Date+'</p><div style="clear:both;"></div></div><div class="text-center m-auto" style="width:75%;height: 10px;position: relative;bottom: 25px;"><div class="p-1 points-dots"></div><div class="progress margin-auto" style="position: relative;height: 0.5rem;"><div class="progress-bar progress-bar-striped progress-bar-animated "style="width:'+value.event_Status+'%;background-size: 0.5rem 0.8rem;background-color:#43b54380;background-image: linear-gradient(45deg,rgba(255, 255, 255, 0.82) 25%,#797676c7 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);"></div></div><div class="p-1 points-dots2"></div><div style="font-size: 12px;font-weight: 600;height: 0px;position: relative;bottom: 5px;width: 100%;text-align: center;">Status: <span style="font-size:'+font_size+'px;">'+value.delivered_Status+'</span></div></div><div class="clear:both;"></div></div><div class="col-md-3 col-sm-3 text-center p-0 imagenotif"><img src="./images/'+alertss+'" style="width:16px;height:16px;margin-top:20px;" class="notif"></div><div style="clear:both"></div></div>';
+             		var shipment_device = '<div class="p-1 m-1 live_shipments_list row goods_'+value.goods_Desc+' shipdate_'+date_string+' delivery_'+value.shipment_Num+' device_'+value.device_Id+' reference_'+value.type_Of_Reference+' dept_'+value.departments+' one_'+value.device_Id+' two_list two_view_'+value.shipment_Id+' from_'+value.route_From.toLowerCase()+' to_'+value.route_To.toLowerCase()+'" onclick="javascript:showdatadialogbox(\''+value.shipment_Id+'\',\''+value.shipment_Num+'\',\''+value.device_Id+'\',\''+value.created_Date+'\',\''+value.route_From+'\',\''+value.route_To+'\','+getPointsWays+');" style="width:98%;border:1px solid black;border-radius:3px;min-height:60px;cursor:pointer;"  ><div style="display:none;">'+value.device_Id+'</div><div style="display:none;">'+value.route_From+'</div><div style="display:none;">'+value.route_To+'</div><div style="display:none;">'+value.goods_Desc+'</div><div style="display:none;">'+value.shipment_Num+'</div><div style="display:none;">'+value.type_Of_Reference+'</div><div class="from_coordinates_'+value.route_From.toLowerCase()+' to_coordinates_'+value.route_To.toLowerCase()+' device_coordinates_'+value.device_Id+'" style="display:none;">'+value.wayPoints[var_length-1]+'</div><div class="col-md-4 col-sm-4"><h6 class="m-0">'+value.shipment_Id+'</h6><p style="font-size:10px;margin:0px;font-weight:600;">From :- '+value.route_From+'</p><p style="font-size:10px;margin:0px;font-weight:600;">To :- '+value.route_To+'</p></div><div class="col-md-5 col-sm-5"><div style="width:100%;"><p style="float:left;text-align:left;width:50%;font-size:10px;margin:0px;font-weight:600;margin-top:0px;">'+date_create+'</p><p style="float:left;text-align:right;width:50%;font-size:10px;font-weight:600;margin-top:0px;">'+delivered_Date+'</p><div style="clear:both;"></div></div><div class="text-center m-auto" style="width:75%;height: 10px;position: relative;bottom: 25px;"><div class="p-1 points-dots"></div><div class="progress margin-auto" style="position: relative;height: 0.5rem;"><div class="progress-bar progress-bar-striped progress-bar-animated "style="width:'+value.event_Status+'%;background-size: 0.5rem 0.8rem;background-color:#43b54380;background-image: linear-gradient(45deg,rgba(255, 255, 255, 0.82) 25%,#797676c7 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);"></div></div><div class="p-1 points-dots2"></div><div style="font-size: 12px;font-weight: 600;height: 0px;position: relative;bottom: 5px;width: 100%;text-align: center;">Status: <span style="font-size:'+font_size+'px;">'+value.delivered_Status+'</span></div></div><div class="clear:both;"></div></div><div class="col-md-3 col-sm-3 text-center p-0 imagenotif"><img src="./images/'+alertss+'" style="width:16px;height:16px;margin-top:20px;" class="notif"></div><div style="clear:both"></div></div>';
              			$(".live_shipments").append(shipment_device);
              			var string_json = [];
              		//alert(value.shipment_Id);
-             		var shipment_val = [];
              			$.getJSON("http://localhost:8080/SCMXPert/getShipmentTransactionDeviceData/"+value.shipment_Id,function(filters){
              				var filter_length = filters.length;
              				var value_filter = filters[filter_length - 1];
@@ -405,12 +289,13 @@ label{margin:0px;}
              				$.each(filters,function(key,value){
              					event_sNO.push(value.event_SNo);
              				});
+             				
              				event_sNO.sort(function(a, b){return b-a});
              				var event_SNo_c = event_sNO[0];
-             				
              				$.each(filters,function(kew,val){
              					if(event_SNo_c == val.event_SNo)
              						{
+             						console.log(event_SNo_c+','+val.event_SNo);
              						var status_length = val.event_Name.length;
 				             		if(status_length > 15)
 				             			{
@@ -418,11 +303,10 @@ label{margin:0px;}
 				             			}else{
 				             				var font_size = "12";
 				             			}
-	             						var tabletr = "<tr><td>"+val.shipment_Num+"</td><td>"+val.device_Id+"</td><td style='font-size:"+font_size+"px;'>"+val.event_Name+"</td><td>"+val.report_type+"</td><td>"+val.internal_temperature+"<sup style='font-size:8px;font-weight:bold;'>0</sup>"+val.temp_Measurment+"</td><td>"+val.bat+"</td><td>"+val.mode_of_Transport+"</td></tr>";
+	             						var tabletr = "<tr><td style='display:none;'>"+value.goods_Desc+"</td><td style='display:none;'>"+value.route_From+"</td><td style='display:none;'>"+value.route_To+"</td><td>"+val.shipment_Id+"</td><td>"+val.shipment_Num+"</td><td>"+val.device_Id+"</td><td style='font-size:"+font_size+"px;'>"+val.event_Name+"</td><td>"+val.report_type+"</td><td>"+val.internal_temperature+"<sup style='font-size:8px;font-weight:bold;'>0</sup>"+val.temp_Measurment+"</td><td>"+val.bat+"</td><td>"+val.mode_of_Transport+"</td></tr>";
 	                     				$('#draftTableaa>tbody').append(tabletr); 
 
              						}
-             					shipment_val.push(tabletr);
              					
              					});
              				
@@ -575,7 +459,7 @@ label{margin:0px;}
 		    	
 		    	zoomEnabled: true,
 		        title:{
-		            text:"Live Chart from Temperature battery"
+		            text:"Live Chart from Temperature"
 		        },
 		        axisY:{
 		        	      minimum: 20,
@@ -705,7 +589,6 @@ label{margin:0px;}
  					{
  						var event_num = event_sNO[i];
  		 				$.each(filters,function(kew,val){
- 		 					
  		 		 					if(event_num == val.event_SNo)
  		 		 						{
  		 		 						//alert(kew);
@@ -720,18 +603,23 @@ label{margin:0px;}
  		 		                    	var date_Time = dateTime.toLocaleString();
  		 			             		//var val_data = '<div class=""><div><span>Altitude :- </span><span>'+val.altitude+'</span></div><div><span>Battery :- </span><span>'+val.bat+'</span></div><div><span>Distance :- </span><span>'+val.distance+'</span></div><div><span>Latitude :- </span><span>'+val.latitude+'</span></div><div><span>Longitude :- </span><span>'+val.longitude+'</span></div><div><span>Report Type :- </span><span>'+val.report_type+'</span></div><div><span>Sensor Id :- </span><span>'+val.sensor_id+'</span></div><div><span>Speed :- </span><span>'+val.speed+'</span></div><div><span>UTC TIME :- </span><span>'+val.utc+'</span></div><div><span>Internal Temperature :- </span><span>'+val.internal_temperature+'</span></div><div><span>Mode of Transport :- </span><span>'+val.mode_of_Transport+'</span></div><div><span>Message Number :- </span><span>'+val.message_Number+'</span></div><div><span>Temp Measurment :- </span><span>'+val.temp_Measurment+'</span></div><div><span>Shipment Id :- </span><span>'+val.shipment_Id+'</span></div><div><span>Shipment Num :- </span><span>'+val.shipment_Num+'</span></div><div><span>Device Id :- </span><span>'+val.device_Id+'</span></div><div><span>Event Name :- </span><span>'+val.event_Name+'</span></div><div><span>Event S.No :- </span><span>'+val.event_SNo+'</span></div></div>';
  		 			             		var val_data = val.altitude;
- 		 		     						var tabletr = '<tr ondblclick="javascript:TableViewDataTranscation(\''+val_data+'\');"><td>'+val.shipment_Num+'</td><td>'+val.device_Id+'</td><td style="font-size:'+font_size+'px;">'+val.event_Name+'</td><td>'+val.partner_From+'</td><td>'+val.internal_temperature+'<sup style="font-size:8px;font-weight:bold;">0</sup>'+val.temp_Measurment+'</td><td>'+date_Time+'</td><td>'+val.mode_of_Transport+'</td></tr>';
+ 		 		     						var tabletr = '<tr ondblclick="javascript:TableViewDataTranscation(\''+val_data+'\');"><td class="ShipmentNumber">'+val.shipment_Num+'</td><td class="">'+val.device_Id+'</td><td style="font-size:'+font_size+'px;">'+val.event_Name+'</td><td>'+val.partner_From+'</td><td>'+val.internal_temperature+'<sup style="font-size:8px;font-weight:bold;">0</sup>'+val.temp_Measurment+'</td><td>'+date_Time+'</td><td>'+val.mode_of_Transport+'</td></tr>';
  		 		             				$('#shipmentdatalistshow>tbody').append(tabletr); 
  		 		             				//var json_table = 
  		 		                  			             						
  		 		 						} 
  		 		 					//alert(tabletr);
  		 		 				});
- 						
- 						
+ 		 				/* $.each("#shipmentdatalistshow>thead>tr>th",function(key,value){
+ 		 	        		alert(value); 
+ 		 	        	 }); */
+ 						//console.log($("#shipmentdatalistshow>thead>tr>th").text());
+ 		 				//$("#shipmentdatalistshow>thead>tr>.ShipmentNumber").hide();
+ 		 				//$("#shipmentdatalistshow>tbody>tr>.ShipmentNumber").hide();
  					}
  				var shipment = $(".two_view_"+shipment_Id).html();
  				$(".shipment_name").html("<div class='row'>"+shipment+"</div>");
+ 				
  				
  				$("#shipmentdatalistshow").DataTable();
  				
@@ -768,6 +656,7 @@ label{margin:0px;}
   	   			var jsondataTable = JSON.stringify(myRows);
   	   			showtableforperShipment(jsondataTable); */
  			});
+   		$("#addChangeFilterList").attr("onclick","javascript:showSelectTableValues('"+shipment_Id+"');");
    			
    			//$("#").DataTable();
         }
@@ -941,14 +830,17 @@ label{margin:0px;}
  					}
  					if(key == "goods")
  					{
+ 						var goodlist = [];
  						$.each(value,function(keys,values){
- 							$.each(values,function(ke,val){
- 								 if(ke == "goods_Item"){
- 									var selectgoods = '<option value="'+val+'">'+val+'</option>';
- 									$("#selectgoods").append(selectgoods);
- 								} 
- 							});
+ 							if($.inArray(values.goods_Item, goodlist) != -1)
+								{$(this).remove();}else{
+									goodlist.push(values.goods_Item);
+								}
  						});
+						 $.each(goodlist,function(key,value){
+ 							var select_device_Id_items = '<option value="'+value+'">'+value+'</option>';
+ 							$("#selectgoods").append(select_device_Id_items)
+ 						}); 
  					}
  				});
              });
@@ -964,7 +856,7 @@ label{margin:0px;}
         	  document.getElementById("formfilter").reset();
         	  
         } */
-        function seachfilter()
+        function seachfilter1()
         {
         	var from = $("#from").val().toLowerCase().trim();
         	var to = $("#to").val().toLowerCase().trim();
@@ -1478,7 +1370,104 @@ label{margin:0px;}
             // Click download link
             downloadLink.click();
         }
+function showSelectTableValues(shipmentid)
+{
+	$(".showtablelist,#backgroundBlur").show();
+	$("#SaveFiltersListBtn").attr("onclick","javascript:SaveFiltersListBtn('"+shipmentid+"');");
+}
+function SaveFiltersListBtn(shipmentid)
+{
+	var selHeader = $("input[name='filterList']:checked").map(function(_, el) {
+        return $(el).next("label").text();
+    }).get();
+	var selbody = $("input[name='filterList']:checked").map(function(_, el) {
+        return $(el).val();
+    }).get();
+	//alert(selbody);
+	$('#shipmentdatalistshow>tbody').empty();
+	$.getJSON("http://localhost:8080/SCMXPert/getShipmentTransactionDeviceData/"+shipmentid,function(filters){
+			/* var filter_length = filters.length;
+			var value_filter = filters[filter_length - 1];
+			//alert(sort(value_filter.event_SNo));*/
+			$('#shipmentdatalistshow>tbody').empty();
+			var event_sNO = []; 
+			var partner_From = [];
+			var shipment_Num = [];
+			var device_Id = [];
+			$.each(filters,function(key,value){
+				event_sNO.push(value.event_SNo);
+				partner_From.push(value.partner_From);
+				shipment_Num.push(value.shipment_Num);
+				device_Id.push(value.device_Id);
+			});
+			console.log(shipment_Num);
+			//$(".shortsMenu_update_complete").html('<button class="btn bg-color btn-head" onclick="javascript:updateEvent(\''+shipment_Id+'\',\''+partner_From[0]+'\',\''+shipment_Num[0]+'\',\''+device_Id[0]+'\');" style=" font-size:11px;margin:2px;width: 130px;height: 25px;line-height: 5px;">Update Event</button><button class="btn bg-color btn-head"  onclick="javascript:CompleteShipment(\''+shipment_Id+'\',\''+partner_From[0]+'\',\''+shipment_Num[0]+'\',\''+device_Id[0]+'\');" style=" font-size:11px;margin:2px;width: 130px;height: 25px;line-height: 5px;">Complete Shipment</button><a href="Dashboard.jsp"><button class="btn bg-color btn-head" style=" font-size:11px;margin:2px;width: 64px;float:left;height: 25px;line-height: 5px;">Exit</button></a><button class="btn bg-color btn-head" style=" font-size:11px;margin:2px;width: 64px;float:left;height: 25px;line-height: 5px;">Share</button><span style="clear:both;"></span>');
+			
+			
+			
+			
+			event_sNO.sort(function(a, b){return a-b});
+			/* var event_SNo_c = event_sNO[0]; */
+			
+			for(i=0;i<event_sNO.length;i++)
+				{
+					var event_num = event_sNO[i];
+	 				$.each(filters,function(kew,val){
+	 		 					if(event_num == val.event_SNo)
+	 		 						{
+	 		 						//alert(kew);
+	 		 						var status_length = val.event_Name.length;
+	 			             		if(status_length > 15)
+	 			             			{
+	 			             				var font_size = "10";
+	 			             			}else{
+	 			             				var font_size = "12";
+	 			             			}
+	 			             		var dateTime = new Date( Date.parse(val.utc));
+	 		                    	var date_Time = dateTime.toLocaleString();
+	 			             		//var val_data = '<div class=""><div><span>Altitude :- </span><span>'+val.altitude+'</span></div><div><span>Battery :- </span><span>'+val.bat+'</span></div><div><span>Distance :- </span><span>'+val.distance+'</span></div><div><span>Latitude :- </span><span>'+val.latitude+'</span></div><div><span>Longitude :- </span><span>'+val.longitude+'</span></div><div><span>Report Type :- </span><span>'+val.report_type+'</span></div><div><span>Sensor Id :- </span><span>'+val.sensor_id+'</span></div><div><span>Speed :- </span><span>'+val.speed+'</span></div><div><span>UTC TIME :- </span><span>'+val.utc+'</span></div><div><span>Internal Temperature :- </span><span>'+val.internal_temperature+'</span></div><div><span>Mode of Transport :- </span><span>'+val.mode_of_Transport+'</span></div><div><span>Message Number :- </span><span>'+val.message_Number+'</span></div><div><span>Temp Measurment :- </span><span>'+val.temp_Measurment+'</span></div><div><span>Shipment Id :- </span><span>'+val.shipment_Id+'</span></div><div><span>Shipment Num :- </span><span>'+val.shipment_Num+'</span></div><div><span>Device Id :- </span><span>'+val.device_Id+'</span></div><div><span>Event Name :- </span><span>'+val.event_Name+'</span></div><div><span>Event S.No :- </span><span>'+val.event_SNo+'</span></div></div>';
+	 			             		var val_data = val.altitude;
+	 		     						/* var tabletr = '<tr ondblclick="javascript:TableViewDataTranscation(\''+val_data+'\');"><td class="ShipmentNumber">'+val.shipment_Num+'</td><td class="">'+val.device_Id+'</td><td style="font-size:'+font_size+'px;">'+val.event_Name+'</td><td>'+val.partner_From+'</td><td>'+val.internal_temperature+'<sup style="font-size:8px;font-weight:bold;">0</sup>'+val.temp_Measurment+'</td><td>'+date_Time+'</td><td>'+val.mode_of_Transport+'</td></tr>';
+	 		             				$('#shipmentdatalistshow>tbody').append(tabletr);  */
+	 		             				var tableHeader = []
+	 		             				$.each(selHeader,function(key,headervalue){
+	 		             					var tableHeadervalue = "<th>"+headervalue+"</th>";
+	 		             					tableHeader.push(tableHeadervalue);
+	 		             				});
+	 		             				var tablebody = []
+	 		             				$.each(selbody,function(key,bodyvalue){
+	 		             					//var kjsj = val.;
+	 		             					$.each(val,function(k,v){
+	 		             						if(k == bodyvalue){
+	 		             							var tablebodyvalue = "<td>"+v+"</td>";
+	 		 		             					tablebody.push(tablebodyvalue);
+	 		 		             					//console.log(tablebodyvalue);
+	 		             						}
+	 		             					})
+	 		             					/* console.log(val+"."+bodyvalue);
+	 		             					console.log(bodyvalue); */
+	 		             					//alert(bodyvalue);
+	 		             					
+	 		             				});
+	 		             				
+	 		             				
+	 		             				$('#shipmentdatalistshow>thead').empty();
+	 		             				$('#shipmentdatalistshow>thead').html('<tr>'+tableHeader+'<th> <span id="addChangeFilterList"><i class="fa fa-plus-circle"></i></span></th></tr>'); 
+	 		             				$('#shipmentdatalistshow>tbody').append('<tr>'+tablebody+'</tr>');
 
+	 		                  			             						
+	 		 						} 
+	 		 				});
+
+				}
+			var shipment = $(".two_view_"+shipmentid).html();
+			$(".shipment_name").html("<div class='row'>"+shipment+"</div>");
+			$("#addChangeFilterList").attr("onclick","javascript:showSelectTableValues('"+shipmentid+"');");
+
+		});
+	$(".showtablelist,#backgroundBlur").hide();
+	
+}
       </script>
 <img src="./images/loading.gif" id="loadingimg"/>
 <div class="dashboard_page">
@@ -1527,7 +1516,7 @@ label{margin:0px;}
 	</div>
 	<div class="float-left p-1" style="width:20%;"> 
 		<label class="cols-label font-weight-bold">Delivery Number : </label>
-		<input type="text" class="form-control" placeholder="Enter Your Location" id="delivery" style="font-size: 10px;height: 22px;padding: 1px;padding-left: 5px;" autocomplete="off"/>
+		<input type="text" class="form-control" placeholder="Enter Delivery Number" id="delivery" style="font-size: 10px;height: 22px;padding: 1px;padding-left: 5px;" autocomplete="off"/>
 	</div>
 	<div class="float-left p-1" style="width:20%;"> 
 		<label class="cols-label font-weight-bold">Reference : </label>
@@ -1612,6 +1601,7 @@ label{margin:0px;}
      			<div class="shipment_name"></div>
      		</div>
      	</div>
+     	<div style="height:290px;overflow-y:auto;width:100%;">
       	<table class="table table-striped table-bordered draftTableaa" id="shipmentdatalistshow" style="overflow-x:auto;font-size:11px;margin-top:1%;">
 			<thead class="bg-color" style="color:#fff;">
 				<tr>
@@ -1621,10 +1611,47 @@ label{margin:0px;}
 					<th>BP Id </th>
 					<th>Internal Temp.</th>
 					<th>Date</th>
-					<th>Mode Of Transport</th>
+					<th>Mode Of Transport</th><th> <span id="addChangeFilterList"><i class="fa fa-plus-circle"></i></span></th>					
 				</tr>
 			</thead>
-			<tbody></tbody></table>
+			<tbody></tbody></table></div>
+			<div class="showtablelist" style="color:#000;padding-left: 5%;padding-top: 1%;">
+						<div class="col-md-12"><h3 class="mb-2 text-center">Select Table List</h3></div>		
+		<div class="row">
+		<div class="col-md-3">
+		<form style="font-size:12px;text-align: left;">
+		<div class="checkbox"><input type = "checkbox" value="shipment_Id" name="filterList"/> <label>Shipment Id</label></div>
+		<div class="checkbox"><input type = "checkbox" value="shipment_Num" name="filterList"/> <label>Shipment Number</label></div>
+        <div class="checkbox"><input type = "checkbox" value="device_Id" name="filterList"/> <label>Device Id</label></div>
+        <div class="checkbox"><input type = "checkbox" value="bat" name="filterList"/> <label>Battery</label></div>
+        </form></div>
+        <div class="col-md-3">
+		<form style="font-size:12px;text-align: left;">
+        <div class="checkbox"><input type = "checkbox" value="partner_From" name="filterList"/> <label>Partner From</label></div>
+        <div class="checkbox"><input type = "checkbox" value="partner_To" name="filterList"/> <label>Partner To</label></div>
+        <div class="checkbox"><input type = "checkbox" value="event_Name" name="filterList"/> <label>Event Name</label></div>
+        <div class="checkbox"><input type = "checkbox" value="event_SNo" name="filterList"/> <label>Event SNo</label></div>
+        </form>
+        </div>
+        <div class="col-md-3">
+        <form style="font-size:12px;text-align: left;">
+        <div class="checkbox"><input type = "checkbox" value="mode_of_Transport" name="filterList"/> <label>Mode of Transport</label></div>
+        <div class="checkbox"><input type = "checkbox" value="internal_temperature" name="filterList"/> <label>Internal Temperature</label></div>
+        <div class="checkbox"><input type = "checkbox" value="distance" name="filterList"/> <label>Distance</label></div>
+        <div class="checkbox"><input type = "checkbox" value="report_type" name="filterList"/> <label>Report Type</label></div>
+        </form></div>
+        <div class="col-md-3">
+        <form style="font-size:12px;text-align: left;">        
+        <div class="checkbox"><input type = "checkbox" value="sensor_id" name="filterList"/> <label>Sensor Id</label></div>
+        <div class="checkbox"><input type = "checkbox" value="speed" name="filterList"/> <label>Speed</label></div>
+        <div class="checkbox"><input type = "checkbox" value="utc" name="filterList"/> <label>Time</label></div>
+        </form>
+        </div></div>
+        <div class="cols-md-12 text-center">
+        <button class="bg-color margin-rl1 btn-head mt-2" id="CancelBtn">Cancel</button>
+        <button class="bg-color margin-rl1 btn-head mt-2" id="SaveFiltersListBtn">Save Table</button>
+        </div>        
+        </div>
 			<div style="width:100%;height:20px;"></div>
 			<div id="chartContainer" style="height: 200px; width: 100%;" class="live_charts"></div>
 				<div id="chartContainer1" style="height: 300px; width: 100%;" class="delivery_charts"></div>
@@ -1670,6 +1697,7 @@ label{margin:0px;}
 		<table class="table table-striped table-bordered draftTableaa " id="draftTableaa" style="overflow-x:auto;font-size:11px;height:150px;overflow-y:auto;">
 			<thead class="bg-color tableHeadershown" style="color:#fff;">
 				<tr>
+					<th>Shipment Id</th>
 					<th>Delivery No.</th>
 					<th>Device Id</th>
 					<th>Event Name</th>

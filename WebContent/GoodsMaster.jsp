@@ -35,7 +35,7 @@
 <div class="col-sm-12 col-md-12 col-lg-12 text-center">
 <div class="row text-center">
 
-<div class="col-sm-12 col-md-12 col-lg-12"><a href="Dashboard.jsp"><button class="bg-color btn-head float-left"><i class="fa fa-arrow-left" style="font-size:18px"></i></button></a></div>
+<div class="col-sm-12 col-md-12 col-lg-12" style="padding-right:17%;"><a href="Dashboard.jsp"><button class="bg-color btn-head float-right"><i class="fa fa-arrow-left" style="font-size:18px"></i></button></a></div>
 
 <div id="error"></div>
 	<div class="col-sm-12 col-md-8 col-lg-8 pb-0 pt-2 pr-2 pl-2 m-auto" >
@@ -104,7 +104,7 @@
 	</table>
 	<div style="margin-bottom:10px;">
 	<div class="bg-color" style="margin-bottom: 15px;color:#ffffff;border-radius:5px;padding-left: 30px; padding-top: 9px; padding-bottom: 9px; font-weight: bold;">Additional Parameters</div>
-	<div style="width:100%;height:30px;"><span style="width:45%;height: 30px;float: left;font-weight:bold;text-align:right;padding-right:10px;font-size:13px;">Light Sensor :</span><span style="width:50%;height: 30px;float: left;"><select class="form-control" style="width:100%;height: 30px;padding-top: 1px;padding-bottom: 1px;font-size: 13px;" id="sensorSelect"> <option  value="select ">Select Sensor</option>
+	<div style="width:100%;height:35px;"><span style="width:45%;height: 30px;float: left;font-weight:bold;text-align:right;padding-right:10px;font-size:13px;line-height: 30px;">Light Sensor :</span><span style="width:50%;height: 30px;float: left;"><select class="form-control" style="width:100%;height: 30px;padding-top: 1px;padding-bottom: 1px;font-size: 13px;" id="sensorSelect"> <option  value="select ">Select Sensor</option>
           <option value="LS1 (Extremely Sensitive)">LS1 (Extremely Sensitive)</option>
           <option value="LS2 (Very Sensitive)">LS2 (Very Sensitive)</option>
           <option value="LS3 (Sensitive)">LS3 (Sensitive)</option>
@@ -114,22 +114,22 @@
           <option value="LS7 (Insensitive)">LS7 (Insensitive)</option>
           <option value="LS8 (Very Insensitive)">LS8 (Very Insensitive)</option>
           <option value="LS9 (Extremly Insensitive)">LS9 (Extremly Insensitive)</option></select></span></div>
-	<div style="width:100%;height:30px;"><span style="width:45%;height: 30px;float: left;font-weight:bold;text-align:right;padding-right:10px;font-size:13px;">Pressure Change :</span><span style="width:50%;height: 30px;float: left;"><select class="form-control" style="width:100%;height: 30px;padding-top: 1px;padding-bottom: 1px;font-size: 13px;" id="pressureSelect"><option value="">Select Value</option><option value="30 KPa">30 KPa</option>
+	<div style="width:100%;height:35px;"><span style="width:45%;height: 30px;float: left;font-weight:bold;text-align:right;padding-right:10px;font-size:13px;line-height: 30px;">Pressure Change :</span><span style="width:50%;height: 30px;float: left;"><select class="form-control" style="width:100%;height: 30px;padding-top: 1px;padding-bottom: 1px;font-size: 13px;" id="pressureSelect"><option value="">Select Value</option><option value="30 KPa">30 KPa</option>
           <option value="10 KPa">10 KPa</option>
           <option value="20 KPa">20 KPa</option>
           <option value="40 KPa">40 KPa</option>
           <option value="50 KPa">50 KPa</option></select></span></div>
-	<div style="width:100%;height:30px;"><span style="width:45%;height: 30px;float: left;font-weight:bold;text-align:right;padding-right:10px;font-size:13px;">Hazardous Product :</span><span style="width:50%;height: 30px;float: left;"><select class="form-control" style="width:100%;height: 30px;padding-top: 1px;padding-bottom: 1px;font-size: 13px;" id="hazardousSelect"><option value="">Select Product</option>
+	<div style="width:100%;height:35px;"><span style="width:45%;height: 30px;float: left;font-weight:bold;text-align:right;padding-right:10px;font-size:13px;line-height: 30px;">Hazardous Product :</span><span style="width:50%;height: 30px;float: left;"><select class="form-control" style="width:100%;height: 30px;padding-top: 1px;padding-bottom: 1px;font-size: 13px;" id="hazardousSelect"><option value="">Select Product</option>
           <option value="HAZMAT">HAZMAT</option>
           <option value="Radioactive">Radioactive</option></select></span></div>
-	<div style="width:100%;height:30px;"><span style="width:45%;height: 30px;float: left;font-weight:bold;text-align:right;padding-right:10px;font-size:13px;">Photo Evidence :</span><span style="width:50%;height: 30px;float: left;"><select class="form-control" style="width:100%;height: 30px;padding-top: 1px;padding-bottom: 1px;font-size: 13px;" id="evidenceSelect"><option value="">Select Photo</option><option value="No">No</option>
+	<div style="width:100%;height:35px;"><span style="width:45%;height: 30px;float: left;font-weight:bold;text-align:right;padding-right:10px;font-size:13px;line-height: 30px;">Photo Evidence :</span><span style="width:50%;height: 30px;float: left;"><select class="form-control" style="width:100%;height: 30px;padding-top: 1px;padding-bottom: 1px;font-size: 13px;" id="evidenceSelect"><option value="">Select Photo</option><option value="No">No</option>
           <option value="Yes">Yes</option></select></span></div>
 	
 	</div>
 	<div class="m-auto mt-2">
-	<button type="button" class="bg-color btn-head m-1" id="cancelGoods">Cancel</button>
-	<button type="button" class="bg-color btn-head m-1" onclick="javascript:UpdateGoods();" id="updateGoods">Update</button>
-	<button type="button" class="bg-color btn-head m-1" onclick="javascript:createGoods();" id="createGoods">Create</button>
+	<button type="button" class="bg-color btn-head m-1" id="cancelGoods">Cancel Goods</button>
+	<button type="button" class="bg-color btn-head m-1" onclick="javascript:UpdateGoods();" id="updateGoods">Update Goods</button>
+	<button type="button" class="bg-color btn-head m-1" onclick="javascript:createGoods();" id="createGoods">Create Goods</button>
 	</div>
 	</div>
 </div></div>

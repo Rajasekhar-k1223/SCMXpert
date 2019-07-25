@@ -33,7 +33,7 @@
  <div class="col-sm-12 col-md-12 col-lg-12 text-center">
 <div class="row text-center">
 
-<div class="col-sm-12 col-md-12 col-lg-12"><a href="Dashboard.jsp"><button class="btn btn-dark float-right" style="padding:5px 15px;font-size: 12px;font-weight: 600;margin-right: 12%;">Back</button></a></div>
+<div class="col-sm-12 col-md-12 col-lg-12" style="padding-right:17%;"><a href="Dashboard.jsp"><button class="bg-color btn-head float-right"><i class="fa fa-arrow-left" style="font-size:18px"></i></button></a></div>
 
 <div id="error"></div>
 	<div class="col-sm-12 col-md-8 col-lg-8 p-2 m-auto" >

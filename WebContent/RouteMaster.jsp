@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>SCMXpert/Route Master</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="./View/jsfiles.jsp" />
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -17,11 +17,12 @@
 <script src=" https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
  <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
-<script src="./js/jquery.cookie.js"></script>
+<!-- <script src="./js/jquery.cookie.js"></script> -->
+
 <!-- <script src="./js/All.js"></script> -->
-<script src="./js/CommonFunction.js"></script>
+<!-- <script src="./js/CommonFunction.js"></script> -->
 <!-- <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"/>  -->
-<script src="./js/jquery.tabletojson.js"></script>
+<!-- <script src="./js/jquery.tabletojson.js"></script> -->
 <!-- <script src="./js/completeShipment.js"></script> -->
 </head>
 <body>
@@ -43,7 +44,8 @@
 btn btn-light dropdown-toggle{
  background:brown;
 }
-.showprelocation{background: #fff;width: 40%;position: absolute;text-align: left;;margin-top: 3px; border-radius: 3px;}
+.showprelocationf{background: #fff;width: 40%;position: absolute;text-align: left;;margin-top: 3px; border-radius: 3px; margin: auto;text-align: center;left: 30%;}
+.showprelocationt{background: #fff;width: 40%;position: absolute;text-align: left;;margin-top: 3px; border-radius: 3px; margin: auto;text-align: center;left: 30%;}
 #updateEvent{display:none;}</style>
 <jsp:include page="./View/header.jsp" />
 <script src="./js/RouteMaster.js"></script>
@@ -55,7 +57,7 @@ btn btn-light dropdown-toggle{
 <div class="col-sm-12 col-md-12 col-lg-12 text-center">
 <div class="row text-center">
 
-<div class="col-sm-12 col-md-12 col-lg-12"><a href="Dashboard.jsp"><button class="bg-color btn-head float-left"><i class="fa fa-arrow-left" style="font-size:18px"></i></button></a></div>
+<div class="col-sm-12 col-md-12 col-lg-12" style="padding-right:17%;"><a href="Dashboard.jsp"><button class="bg-color btn-head float-right"><i class="fa fa-arrow-left" style="font-size:18px"></i></button></a></div>
 
 <div id="error"></div>
 	<div class="col-sm-12 col-md-8 col-lg-8 p-2 m-auto" >
@@ -70,9 +72,9 @@ btn btn-light dropdown-toggle{
 	<div class="col-sm-12 col-md-12 col-lg-12 text-center p-0 float-left">
 	<div style="width: 100%;height: 35px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 20px;">Route Description :</span><span class="float-left" style="width:45%;"><select class="form-control" placeholder="Event Id" style="height:30px;font-size: 12px;font-weight:bold;padding: 0px;padding-left: 0.2rem;" id="event_id_val"><option value="">Create New Route Description</option></select></span></div>
 	<div style="width: 100%;height: 35px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 20px;">Route Id :</span><span class="float-left" style="width:45%;"><input type="text" disabled="disabled" placeholder="Enter Route Id 20001" id="event_type_val" class="form-control" style="height:30px;font-size: 12px;font-weight:bold;"/></span></div>
-	<div style="width: 100%;height: 35px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 20px;">Ship From :</span><span class="float-left" style="width:40%;"><input type="text" placeholder="Enter Route From" autocomplete="off" id="route_name_from" class="form-control" style="height:30px;font-size: 12px;font-weight:bold;"/><div class="showprelocation"></div><!-- <select class="form-control p-0 pl-2" placeholder="Event Id" style="height:30px;font-size: 12px;font-weight:bold;" id="event_from" onchange="javascript:ship_from();"><option value="">Select From</option></select> --></span><span class="p-2 bg-color float-left addRoute-btn" onclick="javascript:addShipFrom();"><i class="fa fa-plus-circle"></i> </span></div>
-	<div style="width: 100%;height: 35px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 20px;">Ship To :</span><span class="float-left" style="width:40%;"><input type="text" placeholder="Enter Route To" autocomplete="off" id="route_name_to" class="form-control" style="height:30px;font-size: 12px;font-weight:bold;"/><!-- <select class="form-control p-0 pl-2" placeholder="Event Id" style="height:30px;font-size: 12px;font-weight:bold;" id="event_to" onchange="javascript:ship_to();"><option value="">Select To</option>
-         </select> --></span><span class="p-2 bg-color float-left addRoute-btn" onclick="javascript:addShipTo();"><i class="fa fa-plus-circle"></i> </span></div>
+	<div style="width: 100%;height: 35px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 20px;">Ship From :</span><span class="float-left" style="width:40%;"><!-- <input type="text" placeholder="Enter Route From" autocomplete="off" id="route_name_from" class="form-control" style="height:30px;font-size: 12px;font-weight:bold;"/><div class="showprelocationf"></div> --><select class="form-control p-0 pl-2" placeholder="Event Id" style="height:30px;font-size: 12px;font-weight:bold;" id="route_name_from" onchange="javascript:ship_from();"><option value="">Select From</option></select></span><span class="p-2 bg-color float-left addRoute-btn" onclick="javascript:addShipFrom();"><i class="fa fa-plus-circle"></i> </span></div>
+	<div style="width: 100%;height: 35px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 20px;">Ship To :</span><span class="float-left" style="width:40%;"><!-- <input type="text" placeholder="Enter Route To" autocomplete="off" id="route_name_to" class="form-control" style="height:30px;font-size: 12px;font-weight:bold;"/><div class="showprelocationt"></div> --> <select class="form-control p-0 pl-2" placeholder="Event Id" style="height:30px;font-size: 12px;font-weight:bold;" id="route_name_to" onchange="javascript:ship_to();"><option value="">Select To</option>
+         </select></span><span class="p-2 bg-color float-left addRoute-btn" onclick="javascript:addShipTo();"><i class="fa fa-plus-circle"></i> </span></div>
 	<div style="width: 100%;height: 35px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 20px;">Primary Mode :</span><span class="float-left" style="width:45%;"><select class="form-control p-0 pl-2" placeholder="Event Id" style="height:30px;font-size: 12px;font-weight:bold;" id="event_pri_mode" onchange="javascript:pri_mode();"><option value="">Select Primary Mode</option>
           <option value="Road">Road</option>
           <option value="Ocean">Ocean</option>
@@ -164,13 +166,15 @@ btn btn-light dropdown-toggle{
       </div>
          <div class="addShipfromPop">
       	<h3 style="text-align:center;width:94%;float:left;padding-top:3%;">Add Shipment From</h3><span class="close" style="width: 2.7%;height: 50px;float: left;padding: 1% 3% 1% 0%;">X</span><span style="clear:both;"></span>
-      	<input type="text" name="shipTo" id="shipFrom"  placeholder="Enter City Name" style="margin-top: 1rem; text-align: center;width: 60%;padding-top: 2%;margin: 4% 20%;height: 30px; padding-top: 2px; font-size: 12px; padding-bottom: 2px;font-weight: 600; border-radius: 4px; border: 1px solid #ced4da;" />
+      	<input type="text" name="shipTo" id="shipFrom"  placeholder="Enter City Name" style="margin-top: 1rem; text-align: center;width: 60%;padding-top: 2%;margin:4% 20% 1% 20%;height: 30px; padding-top: 2px; font-size: 12px; padding-bottom: 2px;font-weight: 600; border-radius: 4px; border: 1px solid #ced4da;" />
+      	<div class="showprelocationf"></div>
       	<div style="width:70%;margin:auto;text-align:center;margin-top: 2%;" ><button id="CancelEvent" class="bg-color margin-rl1 btn-head"  >Cancel</button>
       	<button id="AddEvent" class="bg-color margin-rl1 btn-head"  onclick="javascript:addShipFromNew();">Add Ship From</button></div>
       </div>
        <div class="addShipToPop">
       	<h3 style="text-align:center;width:94%;float:left;padding-top:3%;">Add Shipment To</h3><span class="close" style="width: 2.7%;height: 50px;float: left;padding: 1% 3% 1% 0%;">X</span><span style="clear:both;"></span>
-      	<input type="text" name="shipTo" id="shipTo"  placeholder="Enter City Name" style="margin-top: 1rem; text-align: center;width: 60%;padding-top: 2%;margin: 4% 20%;height: 30px; padding-top: 2px; font-size: 12px; padding-bottom: 2px;font-weight: 600; border-radius: 4px; border: 1px solid #ced4da;" />
+      	<input type="text" name="shipTo" id="shipTo"  placeholder="Enter City Name" style="margin-top: 1rem; text-align: center;width: 60%;padding-top: 2%;margin:4% 20% 1% 20%;height: 30px; padding-top: 2px; font-size: 12px; padding-bottom: 2px;font-weight: 600; border-radius: 4px; border: 1px solid #ced4da;" />
+      	<div class="showprelocationt"></div>
       	<div style="width:70%;margin:auto;text-align:center;margin-top: 2%;" ><button id="CancelEvent" class="bg-color margin-rl1 btn-head"  >Cancel</button>
       	<button id="AddEvent" class="bg-color margin-rl1 btn-head"  onclick="javascript:addShipToNew();">Add Ship To</button></div>
       </div>

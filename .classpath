@@ -13,5 +13,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="D:/DOWNLOAD/jstl-1.2.jar/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/DOWNLOAD/org.springframework.web.servlet-3.0.6.release.jar/org.springframework.web.servlet-3.0.6.release.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

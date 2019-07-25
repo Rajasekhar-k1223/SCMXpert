@@ -32,7 +32,7 @@ function changebpid(scmid,bpid)
 			});
      });
   /***   Get Data for Shipments through web services  ***  End***/
-	liveshipments_list(scmid,bpid);
+	//liveshipments_list(scmid,bpid);
 
 }
 
@@ -246,6 +246,14 @@ function configdevices()
 function Received()
 {
 	window.location.href = "ReceiveDevices.jsp";
+}
+function BusinessPartner()
+{
+	window.location.href = "BusinessPartner.jsp";
+}
+function Customer()
+{
+	window.location.href = "Customer.jsp";
 }
 function getAllCountriesStates()
 {

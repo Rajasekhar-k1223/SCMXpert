@@ -1,13 +1,21 @@
  $(function() {
 	 var Cust_Id = $("#Cust_Id").val();
-	 getAllDevices();
+	 //getAllDevices();
      var addDeviceCountList = $.cookie("DevicesCount")+' Devices';
      //var listDevice = $.cookie("DevicesList");
-     var data = $.cookie("DevicesList");
-     var arr = data.split(',');
-     $.each(arr, function(i, obj){
-    	 $('#listOfDevices').append('<option value="'+arr[i]+'">'+arr[i]+'</option>');
-     });
+     var first = $(location).attr('pathname');
+	    first.indexOf(1);
+	    first.toLowerCase();
+	    first = first.split("/")[2];
+	    if(first == "CreateDeviceTransfer.jsp")
+	    	{
+	    	   	var data = $.cookie("DevicesList");
+		        var arr = data.split(',');
+		        $.each(arr, function(i, obj){
+		       	 $('#listOfDevices').append('<option value="'+arr[i]+'">'+arr[i]+'</option>');
+		        });
+	    	}
+     
 
      
     /* $.each(listDevice,function(key,value){
@@ -22,6 +30,7 @@
  
  function getAllDevices()
  {
+	 $("#deviceAvalibletable>tbody").empty();
 	 $.getJSON("http://localhost:8080/SCMXPert/getAllDevices",function(response){
 		 $.each(response,function(key,value){
 			 $("#location").append('<option value="'+value.location+'">'+value.location+'</option>');
@@ -30,8 +39,14 @@
 			 $("#goodType").append('<option value="'+value.goodsType+'">'+value.goodsType+'</option>');
 			 //$("#ShipNumber").append(value.location);
 			 $("#transfId").append('<option value="'+value.internalTransferId+'">'+value.internalTransferId+'</option>');
-			 var tableVales = '<tr id="checked_'+value.deviceId+'"><td><input type="checkbox" class="checkbox" style="padding:0px;margin:0px;width:14px;" value="'+value.deviceId+'" name="tablecheckbox"/></td><td>'+value.deviceId+'</td><td>'+value.deviceStatus+'</td><td>'+value.location+'</td><td>'+value.customerId+'</td><td>'+value.bpId+'</td><td>'+value.goodsType+'</td><td>'+value.toDestination+'</td><td id="interid_'+value.deviceId+'">'+value.internalTransferId+'</td><td>'+value.trackingNumber+'</td><td>'+value.battery+'</td></tr>';
-			 $("#deviceAvalibletable>tbody").append(tableVales);
+			 if(value.deviceStatus == "Available"){
+				 var tableVales = '<tr id="checked_'+value.deviceId+'"><td><input type="checkbox" class="checkbox" style="padding:0px;margin:0px;width:14px;" value="'+value.deviceId+'" name="tablecheckbox"/></td><td>'+value.deviceId+'</td><td>'+value.deviceStatus+'</td><td>'+value.location+'</td><td>'+value.customerId+'</td><td>'+value.bpId+'</td><td>'+value.goodsType+'</td><td>'+value.toDestination+'</td><td id="interid_'+value.deviceId+'">'+value.internalTransferId+'</td><td>'+value.trackingNumber+'</td><td>'+value.battery+'</td></tr>';
+				 $("#deviceAvalibletable>tbody").append(tableVales);
+			 }else{
+				 var tableVales = '<tr id="checked_'+value.deviceId+'"><td></td><td>'+value.deviceId+'</td><td>'+value.deviceStatus+'</td><td>'+value.location+'</td><td>'+value.customerId+'</td><td>'+value.bpId+'</td><td>'+value.goodsType+'</td><td>'+value.toDestination+'</td><td id="interid_'+value.deviceId+'">'+value.internalTransferId+'</td><td>'+value.trackingNumber+'</td><td>'+value.battery+'</td></tr>';
+				 $("#deviceAvalibletable>tbody").append(tableVales);
+			 }
+			 
 			/* alert(value.location+', '+value.toDestination+', '+value.deviceStatus+' '+value.goodsType+', '+value.internalTransferId);
 			 $.each(value,function(k,val){
 				 
@@ -42,6 +57,57 @@
 	 });
 	 
  }
+ function InUsegetAllDevices()
+ {
+	 $.getJSON("http://localhost:8080/SCMXPert/getINUseDevices",function(response){
+		 var routeslist = [];
+		 var routeslistD = [];
+		 var geolocation = [];
+		 $.each(response,function(keys,values){
+			 var geoloc = values.location;
+			 geolocation.push(geoloc);
+				if($.inArray(values.location, routeslist) != -1)
+					{$(this).remove();}else{
+						routeslist.push(values.location);
+					}
+				if($.inArray(values.toDestination, routeslist) != -1)
+				{$(this).remove();}else{
+					routeslistD.push(values.toDestination);
+				}
+		});
+		 //getlocations(geolocation);
+		 $.each(routeslist,function(key,value){
+				var select_device_Id_items = '<option value="'+value+'">'+value+'</option>';
+				$("#route_name_from_InUse").append(select_device_Id_items)
+			});
+		 $.each(routeslistD,function(key,value){
+				var select_device_Id_items = '<option value="'+value+'">'+value+'</option>';
+				$("#route_name_to_InUse").append(select_device_Id_items)
+			});
+		 $.each(response,function(key,value){
+			 //$("#route_name_from").append('<option value="'+value.location+'">'+value.location+'</option>');
+			// $("#route_name_to").append('<option value="'+value.toDestination+'">'+value.toDestination+'</option>');
+			 $("#Status").append('<option value="'+value.deviceStatus+'">'+value.deviceStatus+'</option>');
+			 $("#goodType").append('<option value="'+value.goodsType+'">'+value.goodsType+'</option>');
+			 $("#deviceId").append('<option value="'+value.deviceId+'">'+value.deviceId+'</option>');
+			 //$("#ShipNumber").append(value.location);
+			 $("#transfId").append('<option value="'+value.internalTransferId+'">'+value.internalTransferId+'</option>');
+			 var theDate = new Date( Date.parse(value.time));
+          	var date_create = theDate.toLocaleString();
+			 var tableVales = '<tr id="checked_'+value.deviceId+'"><td>'+value.deviceId+'</td><td>'+value.customerId+'</td><td>'+value.bpId+'</td><td></td><td>'+value.fromOrigin+'</td><td>'+value.toDestination+'</td><td>'+value.goodsType+'</td><td>'+date_create+'</td><td>'+value.deviceStatus+'</td><td>'+value.location+'</td><td>'+value.battery+'</td></tr>';
+			 $("#deviceInUsetable>tbody").append(tableVales);
+			/* alert(value.location+', '+value.toDestination+', '+value.deviceStatus+' '+value.goodsType+', '+value.internalTransferId);
+			 $.each(value,function(k,val){
+				 
+			
+	
+			 });*/
+		 });
+	 });
+	 
+ }
+ 
+ 
  function createDevice()
  {
 	 

@@ -36,6 +36,7 @@ btn btn-light dropdown-toggle{
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="./View/jsfiles.jsp" />
+<script src="./js/Devices.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <link rel="stylesheet" href="./css/global.css"/>
 <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"/>
@@ -46,12 +47,12 @@ btn btn-light dropdown-toggle{
 <script src=" https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
  <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
-<script src="./js/jquery.cookie.js"></script>
+<!-- <script src="./js/jquery.cookie.js"></script>
 <script src="./js/All.js"></script>
 <script src="./js/CommonFunction.js"></script>
 <script src="./js/jquery.cookie.js"></script>
 <script src="./js/All.js"></script>
-<script src="./js/CommonFunction.js"></script>
+<script src="./js/CommonFunction.js"></script> -->
   </head>
   <body>
   <style>.hide_show_icon,.show_hide_icon{font-weight: bold;cursor:pointer;text-align:center;float:right;margin-top:1%;}
@@ -74,10 +75,52 @@ btn btn-light dropdown-toggle{
  background:brown;
 }</style>
 <jsp:include page="./View/header.jsp" />
- <h2 style="text-align:center;margin:0px;"><img src="./images/Capture_scm_half_logo_1.png" style="width:50px;height:50px;"> In Use</h2>
+<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+
+    <script type="text/javascript">
+      window.onload = function() {
+        L.mapquest.key = 'e8DYG9q9Zamy3iXMvD2iuo3mI93EGRHF';
+
+        // Geocode three locations, then call the createMap callback
+        L.mapquest.geocoding().geocode(['Portland, OR', 'Flagstaff, AZ', 'Denver, CO'], createMap);
+
+        function createMap(error, response) {
+          // Initialize the Map
+          var map = L.mapquest.map('map', {
+            layers: L.mapquest.tileLayer('map'),
+            center: [0, 0],
+            zoom: 12
+          });
+
+          // Generate the feature group containing markers from the geocoded locations
+          var featureGroup = generateMarkersFeatureGroup(response);
+
+          // Add markers to the map and zoom to the features
+          featureGroup.addTo(map);
+          map.fitBounds(featureGroup.getBounds());
+        }
+
+        function generateMarkersFeatureGroup(response) {
+          var group = [];
+          for (var i = 0; i < response.results.length; i++) {
+            var location = response.results[i].locations[0];
+            var locationLatLng = location.latLng;
+
+            // Create a marker for each location
+            var marker = L.marker(locationLatLng, {icon: L.mapquest.icons.marker()})
+              .bindPopup(location.adminArea5 + ', ' + location.adminArea3);
+
+            group.push(marker);
+          }
+          return L.featureGroup(group);
+        }
+      }
+    </script>
+ <h2 style="text-align:center;margin:0px;"><img src="./images/Capture_scm_half_logo_1.png" style="width:50px;height:50px;"> In Use Devices</h2>
  <div class="container">
   	<div class="row">
-  	<div class="col-sm-12 col-md-12 col-lg-12"><a href="Dashboard.jsp"><button class="btn btn-dark float-right" style="padding: 1px 15px;font-size: 12px;font-weight: 600;margin-bottom: 1%;">Back</button></a></div>
+  	<div class="col-sm-12 col-md-12 col-lg-12"><a href="Dashboard.jsp"><button class="bg-color btn-head float-right"><i class="fa fa-arrow-left" style="font-size:18px"></i></button></a></div>
   	<div class="col-sm-12 col-md-12 col-lg-12">
   	<div class="row">
   		<div class="col-sm-12 col-lg-5 col-md-5">
@@ -85,25 +128,26 @@ btn btn-light dropdown-toggle{
   			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Partner Name :</span><span class="float-left" style="width:50%;"><input type="text" class="form-control" placeholder="Number of devices" style="height:25px;font-size: 12px; " id="bp_name"/></span></div> 
   			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Department :</span><span class="float-left" style="width:50%;"><input type="text" class="form-control" placeholder="Number of devices" style="height:25px;font-size: 12px; "/></span></div> 
 
-  			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Ship From :</span><span class="float-left" style="width:50%;"><select class="form-control" id="Status" name="routes" onchange="javascript:SelectRoute(this.value);" style="height:25px;font-size: 12px;padding-top: 3px;"><option value="">Select Option</option></select></span><span class="ml-1"></div>
+  			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Ship From :</span><span class="float-left" style="width:50%;"><select class="form-control" id="route_name_from_InUse" name="routes" onchange="javascript:SelectRoute(this.value);" style="height:25px;font-size: 12px;padding-top: 3px;"><option value="">Select Option</option></select></span><span class="ml-1"></div>
 
-  			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Ship To : </span><span class="float-left" style="width:50%;"><select class="form-control" id="Status" name="routes" onchange="javascript:SelectRoute(this.value);" style="height:25px;font-size: 12px;padding-top: 3px;"><option value="">Select Option</option></select></span><span class="ml-1"></div>
+  			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Ship To : </span><span class="float-left" style="width:50%;"><select class="form-control" id="route_name_to_InUse" name="routes" onchange="javascript:SelectRoute(this.value);" style="height:25px;font-size: 12px;padding-top: 3px;"><option value="">Select Option</option></select></span><span class="ml-1"></div>
 
-  			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Goods Type :</span><span class="float-left" style="width:50%;"><select class="form-control" id="Status" name="routes" onchange="javascript:SelectRoute(this.value);" style="height:25px;font-size: 12px;padding-top: 3px; "><option value="">Select Option</option></select></span><span class="ml-1"></div>
-  			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Device ID :</span><span class="float-left" style="width:50%;"><select class="form-control" id="Status" name="routes" onchange="javascript:SelectRoute(this.value);" style="height:25px;font-size: 12px;padding-top: 3px;"><option value="">Select Option</option></select></span><span class="ml-1"></div>
+  			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Goods Type :</span><span class="float-left" style="width:50%;"><select class="form-control" id="goodType" name="routes" onchange="javascript:SelectRoute(this.value);" style="height:25px;font-size: 12px;padding-top: 3px; "><option value="">Select Option</option></select></span><span class="ml-1"></div>
+  			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Device ID :</span><span class="float-left" style="width:50%;"><select class="form-control" id="deviceId" name="routes" onchange="javascript:SelectRoute(this.value);" style="height:25px;font-size: 12px;padding-top: 3px;"><option value="">Select Option</option></select></span><span class="ml-1"></div>
 
   			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Shipment Number :</span><span class="float-left" style="width:50%;"><input type="text" class="form-control" placeholder="Number of devices" style="height:25px;font-size: 12px; "/></span></div> 
 
   			<div style="width: 100%;height: 30px;font-size: 12px;"><span class="w-50 p-1 font-weight-bold float-left text-right" style="line-height: 15px;">Status :</span><span class="float-left" style="width:50%;"><select class="form-control" id="Status" name="routes" onchange="javascript:SelectRoute(this.value);" style="height:25px;font-size: 12px;padding-top: 3px;"><option value="">Select Option</option></select></span><span class="ml-1"></div>
   		</div>
   		<div class="col-sm-12 col-md-7 col-lg-7">
-  			<div id="googleMap" style="width:100%;height:300px;"></div>	
+  			<!-- <div id="googleMap" style="width:100%;height:300px;"></div>	 -->
+  			<div id="map" style="width:100%;height:280px;z-index:1;"></div>
   		</div>
   	</div>
   	</div></div>
 
-<div class="col-sm-12 col-md-12 col-lg-12 mt-3 p-0" style="overflow-x:auto;">
-<table class="table table-striped table-bordered p-0" style="font-size:11px;overflow-x:auto;">
+<div class="col-sm-12 col-md-12 col-lg-12 mt-3 p-0" style="overflow-x:auto;height:300px;margin-bottom:15px;">
+<table class="table table-striped table-bordered p-0" style="font-size:11px;overflow-x:auto;" id="deviceInUsetable">
 	<thead>
   		<tr>
 			<th>Device ID</th>
@@ -119,7 +163,7 @@ btn btn-light dropdown-toggle{
 			<th>Battery %</th>
  		</tr>
  	</thead>
- 	<tbody></tbody>
+ 	<tbody id="tabledata"></tbody>
  </table>
 </div>
 
@@ -127,7 +171,7 @@ btn btn-light dropdown-toggle{
 	
 	
 </div>
- <script>
+<!--  <script>
 function myMap() {
 var mapProp= {
   center:new google.maps.LatLng(51.508742,-0.120850),
@@ -137,6 +181,6 @@ var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
-
+ -->
 </body>
 </html>
