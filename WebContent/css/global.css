@@ -308,7 +308,7 @@ div#shortsMenu_update_complete button.btn {
 }
 
 .info_attached ul.nav.nav-tabs li.nav-item a.nav-link.active {
-    font-weight: 600;
+    font-weight: bold;
 }
 .info {
     border-left: 2px solid #73182c !important;

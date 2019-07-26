@@ -25,7 +25,7 @@ function result(hash){
 	$("#hash").val(hash);
 	  var encrpt_val = $("#hash").val();
 	  console.log(encrpt_val);
-	  loginToDashboard(encrpt_val);
+	 // loginToDashboard(encrpt_val);
 	}
 	function crypt(){
 		var salt;
@@ -94,7 +94,7 @@ function result(hash){
 		 }
 		});
 } */
-function loginToDashboard(encrpt_val)
+function loginToDashboard()
 {
 	/* var form = new FormData();
 	form.append("username", "exa@exafluence.com");
@@ -121,7 +121,8 @@ function loginToDashboard(encrpt_val)
 	$.ajax(settings).done(function (response) {
 	  console.log(response);
 	});	 */
-	
+	username = $("#username").val();
+	pwd = $("#password").val();
 	$.ajax({
 		 async: true,
 		  crossDomain: true,
@@ -138,7 +139,7 @@ function loginToDashboard(encrpt_val)
 	        "Authorization": "Basic Y2xpZW50OnNlY3JldA==",
 	      
 	      }, 
-	    data: 'grant_type=password&username=exa@exafluence.com&password='+encrpt_val,
+	    data: 'grant_type=password&username='+username+'&password='+pwd,
 	      
 	    type: "POST",
 	    success: function(response) {
@@ -239,7 +240,7 @@ function loginToDashboard(encrpt_val)
 <input type="password" name="password" id="password" placeholder="Password" class="form-control"/>
 </div>
 <div class="form-group text-center mt-4">
-<button class="btn btn-info" id="login" onclick="javascript:crypt();">Submit</button>
+<button class="btn btn-info" id="login" onclick="javascript:loginToDashboard();">Submit</button>
 </div></div>
 </div>
 

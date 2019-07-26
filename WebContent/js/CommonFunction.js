@@ -289,3 +289,75 @@ function getListOfBPIds()
 		});   
 	});	
 }
+
+
+
+/* maps */
+function mapOnLoad(data,name){
+     $(".showmap > div").remove();
+     console.log(data);
+     if(name == "delivery")
+  	   {
+  	   	//	$(".delivery_show_list_items").html(data.length)
+  	   }
+     if(name == "live")
+	   {
+	   	//	$(".live_show_list_items").html(data.length)
+	   }
+ 	$(".showmap").html('<div id="map" style="width:100%;height:450px;z-index:1;"></div>');
+     L.mapquest.key = 'e8DYG9q9Zamy3iXMvD2iuo3mI93EGRHF';
+    // console.log(data);
+	  L.mapquest.geocoding().geocode(data, createMap);
+}
+  function createMap(error, response) {
+  // Initialize the Map
+  var map = L.mapquest.map('map', {
+    layers: L.mapquest.tileLayer('map'),
+    center: [0, 0],
+    zoom: 12
+  });
+
+  // Generate the feature group containing markers from the geocoded locations
+  var featureGroup = generateMarkersFeatureGroup(response);
+
+  // Add markers to the map and zoom to the features
+  featureGroup.addTo(map);
+  map.fitBounds(featureGroup.getBounds());
+}
+
+function generateMarkersFeatureGroup(response) {
+  var group = [];
+  for (var i = 0; i < response.results.length; i++) {
+    var location = response.results[i].locations[0];
+    var locationLatLng = location.latLng;
+
+    // Create a marker for each location
+    var marker = L.marker(locationLatLng, {icon: L.mapquest.icons.marker({
+		    primaryColor: '#18b85a',
+		    secondaryColor: '#18b85a',
+		    shadow: true,
+		    size: 'sm'
+		  })})
+      .bindPopup(location.adminArea5 + ', ' + location.adminArea3);
+
+    group.push(marker);
+  }
+  return L.featureGroup(group);
+} 
+
+function mapPointsRoute(route_From,route_To,getPointsWays)
+{
+   	$("#showmap > div").remove();
+	$("#showmap").html('<div id="map" style="width:100%;height:455px;z-index:1;"></div>');
+    L.mapquest.key = 'e8DYG9q9Zamy3iXMvD2iuo3mI93EGRHF';
+    var map = L.mapquest.map('map', {
+        center: [0,0],
+        layers: L.mapquest.tileLayer('map'),
+        zoom: 13
+      });
+    L.mapquest.directions().route({
+      start: '"'+route_From+'"',
+      end: '"'+route_To+'"',
+      waypoints: getPointsWays
+    });
+}
